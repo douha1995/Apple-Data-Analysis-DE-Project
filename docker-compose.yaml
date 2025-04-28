@@ -33,7 +33,8 @@ services:
   spark-master:
     container_name: da-spark-master
     build: .
-    entrypoint: ['./entrypoint.sh', 'master']
+    command: ["master"]
+    # entrypoint: ['./entrypoint.sh', 'master']
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
       interval: 5s
