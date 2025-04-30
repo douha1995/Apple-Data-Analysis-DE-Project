@@ -1,1 +1,3 @@
 /book_data
+/apps/__pycache__
+spark-defaults.conf

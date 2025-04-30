@@ -41,9 +41,9 @@ services:
       timeout: 3s
       retries: 3
     volumes:
-      - ./book_data:/opt/bitnami/spark/data
-      - ./spark_apps:/opt/bitnami/spark/apps
-      - spark-logs:/opt/bitnami/spark/spark-events
+      - ./book_data:/opt/spark/data
+      - ./apps:/opt/spark/apps
+      - spark-logs:/opt/spark/spark-events
     env_file:
       - .env.spark
     ports:
@@ -61,7 +61,7 @@ services:
     env_file:
       - .env.spark
     volumes:
-      - spark-logs:/opt/bitnami/spark/spark-events
+      - spark-logs:/opt/spark/spark-events
     ports:
       - '18080:18080'
     networks:
@@ -76,9 +76,9 @@ services:
     env_file:
       - .env.spark
     volumes:
-      - ./book_data:/opt/bitnami/spark/data
-      - ./spark_apps:/opt/bitnami/spark/apps
-      - spark-logs:/opt/bitnami/spark/spark-events
+      - ./book_data:/opt/spark/data
+      - ./apps:/opt/spark/apps
+      - spark-logs:/opt/spark/spark-events
     networks:
       - confluent
 volumes:
