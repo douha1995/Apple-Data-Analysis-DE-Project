@@ -4,6 +4,10 @@ spark = SparkSession.builder\
     .appName('Apple_Analysis')\
     .getOrCreate()
     
+spark.conf.set("spark.sql.shuffle.partitions", "5")
+# Set Logging Level to WARN
+spark.sparkContext.setLogLevel("ERROR")
+    
     
 class DataSource:
     """
@@ -26,6 +30,7 @@ class CSVDataSource(DataSource):
         return(
             spark.read.format("csv")\
                 .option("header", "True")\
+                .option("inferSchema", "true")\
                 .load(self.path)
         )
         
